@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import linkedin from "../assets/linkedin.svg"; // Make sure this file exists
+import linkedin from "../assets/linkedin.svg"; 
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
