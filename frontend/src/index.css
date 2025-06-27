@@ -1,0 +1,7 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* Adjust this to your navbar height */
+}
