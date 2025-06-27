@@ -11,7 +11,7 @@ export default function ContactSection() {
     message: "",
   });
   const [isSending, setIsSending] = useState(false); 
-
+  
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -20,15 +20,16 @@ export default function ContactSection() {
     setIsSending(true); 
 
     try {
-      const res = await axios.post("/api/contact", {
+      const API = import.meta.env.VITE_BACKEND_URL || "/api"; 
+
+      const res=await axios.post(`${API}/contact`, {
         name: formData.name,
         email: formData.email,
         contactnumber: formData.contactNumber,
         message: formData.message,
       });
-
       if (res.data.success) {
-        toast.success("✅ Message sent successfully!");
+        toast.success(" Message sent successfully!");
         setFormData({
           name: "",
           email: "",
@@ -36,13 +37,13 @@ export default function ContactSection() {
           message: "",
         });
       } else {
-        toast.error("❌ Failed to send message.");
+        toast.error(" Failed to send message.");
       }
     } catch (error) {
       console.error(error);
-      toast.error("⚠️ An error occurred. Please try again.");
+      toast.error(" An error occurred. Please try again.");
     } finally {
-      setIsSending(false); // Stop loading
+      setIsSending(false); 
     }
   };
 
